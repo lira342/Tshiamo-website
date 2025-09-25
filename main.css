@@ -1,12 +1,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(
-    13deg,
-    #000000 0%,
-    #1a0010 40%,   
-    #ff007f 100%   
-  );
+  background: linear-gradient(13deg, #000000 0%, #1a0010 40%, #ff007f 100%);
   position: relative;
   overflow: hidden;
 }
@@ -20,8 +15,8 @@ body::before {
   bottom: 0;
   background: radial-gradient(
     circle at center top,
-    rgba(255, 0, 127, 0.1) 0%,   /* faint pink glow */
-    rgba(0, 0, 0, 0.95) 80%      /* deep shading */
+    rgba(255, 0, 127, 0.1) 0%,
+    /* faint pink glow */ rgba(0, 0, 0, 0.95) 80% /* deep shading */
   );
   z-index: 1;
   pointer-events: none;
@@ -75,14 +70,14 @@ header nav a:hover {
   text-decoration: underline;
 }
 
-h1, button {
+h1,
+button {
   color: #ffffff;
-  
 }
 
-h2, button {
+h2,
+button {
   color: #ffffff;
-  
 }
 .btn {
   padding: 0.5rem 1rem;

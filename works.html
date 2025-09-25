@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Works Section</title>
+    <style>
+        body {
+            background-color: #000;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .works-section {
+            text-align: center;
+            padding: 20px;
+            width: 80%;
+            max-width: 900px;
+        }
+
+        .works-image-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .works-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .category-tabs button {
+            background-color: #222;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .category-tabs button.active {
+            background-color: #f1f1f1;
+            color: #000;
+            border-color: #f1f1f1;
+        }
+
+        .category-tabs button:hover:not(.active) {
+            background-color: #333;
+        }
+    </style>
+
+    
+</head>
+<body>
+
+  
+
+<div class="works-section">
+    <div class="works-image-container">
+        <img id="main-image" src="https://i.ibb.co/L5hY59n/image-352f66.jpg" alt="Portfolio work example">
+    </div>
+
+    <div class="category-tabs">
+        <button class="tab-button active" data-category="social-media">Social Media</button>
+        <button class="tab-button" data-category="branding">Branding</button>
+        <button class="tab-button" data-category="web-design">Web Design</button>
+        <button class="tab-button" data-category="ui-ux">Web3/UI/UX</button>
+    </div>
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.tab-button');
+    const mainImage = document.getElementById('main-image');
+
+    const images = {
+        'social-media': 'https://i.ibb.co/L5hY59n/image-352f66.jpg',
+        'branding': 'https://via.placeholder.com/900x600/f06292/FFFFFF?text=Branding+Work',
+        'web-design': 'https://via.placeholder.com/900x600/80deea/000000?text=Web+Design+Project',
+        'ui-ux': 'https://via.placeholder.com/900x600/ba68c8/000000?text=UI/UX+Case+Study'
+    };
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove 'active' class from all buttons
+            tabs.forEach(btn => btn.classList.remove('active'));
+
+            // Add 'active' class to the clicked button
+            tab.classList.add('active');
+
+            // Get the category and update the image
+            const category = tab.dataset.category;
+            mainImage.src = images[category];
+        });
+    });
+</script>
+
+</body>
+</html>

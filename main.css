@@ -15,7 +15,7 @@ body::before {
   bottom: 0;
   background: radial-gradient(
     circle at center top,
-    rgba(255, 0, 127, 0.1) 0%,
+    rgba(168, 51, 110, 0.1) 0%,
     /* faint pink glow */ rgba(0, 0, 0, 0.95) 80% /* deep shading */
   );
   z-index: 1;
@@ -30,7 +30,7 @@ header {
   backdrop-filter: blur(8px);
   background-image: radial-gradient(
     circle at top,
-    rgb(114, 11, 83),
+    rgb(247, 65, 192),
     rgb(10, 9, 10)
   );
   z-index: 100;
@@ -73,6 +73,7 @@ header nav a:hover {
 h1,
 button {
   color: #ffffff;
+  
 }
 
 h2,
@@ -81,7 +82,7 @@ button {
 }
 .btn {
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 0.8rem;
   text-transform: uppercase;
   border: 1px solid #ffffff;

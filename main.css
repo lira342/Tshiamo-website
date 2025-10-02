@@ -4,6 +4,7 @@ body {
   background: linear-gradient(13deg, #000000 0%, #1a0010 40%, #ff007f 100%);
   position: relative;
   overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body::before {

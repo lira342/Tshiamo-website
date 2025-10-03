@@ -16,8 +16,8 @@ body::before {
   bottom: 0;
   background: radial-gradient(
     circle at center top,
-    rgba(168, 51, 110, 0.1) 0%,
-    /* faint pink glow */ rgba(0, 0, 0, 0.95) 100% /* deep shading */
+    rgb(158, 26, 129) 0%,
+    /* faint pink glow */ rgba(0, 0, 0, 0.95) 80% /* deep shading */
   );
   z-index: 1;
   pointer-events: none;
@@ -31,11 +31,10 @@ header {
   backdrop-filter: blur(8px);
   background-image: radial-gradient(
     circle at top,
-    rgb(235, 33, 174),
-    rgb(10, 9, 10)
+    rgb(230, 19, 184),
+    rgb(0, 0, 0)
   );
   z-index: 100;
-  
 }
 
 button {
@@ -48,7 +47,6 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 
 header .container {
   max-width: 1200px;
@@ -71,7 +69,6 @@ header nav a:hover {
 h1,
 button {
   color: #ffffff;
-  
 }
 
 h2,
@@ -113,4 +110,8 @@ main {
 
 a.home {
   color: white;
+}
+
+.hero-text {
+  padding: 40px 0;
 }

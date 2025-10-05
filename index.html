@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Tshiamo.M</title>
-    <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8">
+  <title>Tshiamo.M</title>
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<style>
-    body{
-        font-family: Arial, Helvetica, sans-serif;
-    }
-</style>
 
-<header>
-<div class="container">
-<a href="#home" >
-<img src="/pictures/Screenshot (51).png" alt="logo" width="50" height="50">
-</a>
-<nav>
-<a href="about.html">ABOUT</a>
-<a href="works.html">WORKS</a>
-<a href="contacts.html">WORK WITH ME</a>
+<header id="navbar">
+  <div class="container">
+    <!-- inline SVG placeholder logo – replace src with your own png later -->
+    <a href="#home" class="logo">
+      <svg width="50" height="50" viewBox="0 0 50 50">
+        <circle cx="25" cy="25" r="23" fill="#ff007f"/>
+        <text x="25" y="30" text-anchor="middle" fill="#000" font-size="18" font-weight="bold">TM</text>
+      </svg>
+    </a>
 
-</div>
+    <nav>
+      <a href="about.html">ABOUT</a>
+      <a href="works.html">WORKS</a>
+      <a href="contacts.html">CONTACT</a>
+    </nav>
+  </div>
 </header>
 
-<section class="hero">
-<div class="hero-text">
-<h1>TSHIAMO.M</h1>
-<h2>CREATIVE DESIGNER</h2>
+<section id="home" class="hero">
+  <div class="hero-text">
+    <h1>TSHIAMO.M</h1>
+    <h2>CREATIVE DESIGNER</h2>
+  </div>
 </section>
 
+<!-- dummy sections so links have somewhere to go -->
+<section id="about" class="dummy">About</section>
+<section id="works" class="dummy">works</section>
+<section id="contacts" class="dummy">contacts/section>
 
+   
+
+<script src="main.js"></script>
 </body>
 </html>

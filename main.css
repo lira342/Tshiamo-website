@@ -1,117 +1,114 @@
+/* ----------  RESET  ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ----------  GLOBAL  ---------- */
+html { scroll-behavior: smooth; }
 body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(13deg, #000000 0%, #1a0010 40%, #ff007f 100%);
-  position: relative;
-  overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
+  background: #0a0514;            /* deep navy-purple */
+  color: #ebecff;
+  min-height: 100vh;
 }
 
-body::before {
-  content: "";
-  position: absolute;
-  top: 80px; /* same as nav height */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-    circle at center top,
-    rgb(158, 26, 129) 0%,
-    /* faint pink glow */ rgba(0, 0, 0, 0.95) 80% /* deep shading */
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-
+/* ----------  HEADER / NAV  ---------- */
 header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  backdrop-filter: blur(8px);
-  background-image: radial-gradient(
-    circle at top,
-    rgb(230, 19, 184),
-    rgb(0, 0, 0)
-  );
+  top: 0; left: 0; right: 0;
+  height: 80px;
   z-index: 100;
+  transition: height .3s ease, background .3s ease;
+}
+header.glass {                     /* shrank state */
+  height: 60px;
+  background: rgba(24, 0, 51, .65);
+  backdrop-filter: blur(10px);
 }
 
-button {
-  background: #ff007f;
-  color: #fff;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.logo { display: block; }
+
+nav a {
+  margin-left: 1.5rem;
+  color: #ff49d8;                 /* your vivid pink */
+  text-decoration: none;
+  font-size: .9rem;
+  position: relative;
+  transition: color .25s;
+}
+nav a:hover,
+nav a.active { color: #ff8edd; }   /* softer pink on hover */
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 2px;
+  background: #ff49d8;
+  transition: width .25s;
+}
+nav a:hover::after,
+nav a.active::after { width: 100%; }
+
+/* ----------  HERO  ---------- */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 0%,
+                              #702660 0%,   /* your pinkish-purple glow */
+                              #0a0514 70%);
+}
+.hero-text { opacity: 0; transform: translateY(20px); }
+.hero-text h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: #e0e2ff; }
+.hero-text h2 {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 400;
+  margin-top: .5rem;
+  color: #ff49d8;               /* match nav accent */
+}
+
+/* ----------  DUMMY / CONTENT SECTIONS  ---------- */
+.dummy {
+  padding: 4rem 1rem;
+  max-width: 800px;
+  margin: 0 auto 50vh;
+  border-top: 1px solid #ff49d8;   /* pink rule instead of old purple */
+}
+
+/* ----------  BUTTONS (if you add any later)  ---------- */
+button, .btn {
+  background: #ff49d8;
+  color: #0a0514;
   border: none;
-  padding: 12px 24px;
+  padding: .75rem 1.5rem;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background .3s ease;
+}
+button:hover, .btn:hover { background: #ff8edd; }
+
+/* ----------  RESPONSIVE  ---------- */
+@media (max-width: 600px) {
+  nav a { margin-left: 1rem; font-size: .8rem; }
 }
 
-header .container {
-  max-width: 1200px;
-  margin: auto;
+/* ----------  CENTRE WORKS BLOCK VERTICALLY  ---------- */
+.works-middle {
+  min-height: 100vh;              /* full viewport height */
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-}
-header nav a {
-  margin-right: 1.5rem;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 0.9rem;
-}
-header nav a:hover {
-  text-decoration: underline;
-}
-
-h1,
-button {
-  color: #ffffff;
-}
-
-h2,
-button {
-  color: #ffffff;
-}
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  border: 1px solid #ffffff;
-  text-decoration: none;
-}
-.btn.black {
-  background: #000;
-  color: #fff;
-}
-main {
-  padding-top: 6rem;
-}
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 1200px;
-  margin: auto;
-  padding: 4rem 1rem;
-  align-items: center;
-}
-.hero h1 {
-  font-size: 4rem;
-  margin: 0;
-}
-.hero h2 {
-  margin-top: 0.5rem;
-  font-size: 1.5rem;
-}
-
-a.home {
-  color: white;
-}
-
-.hero-text {
-  padding: 40px 0;
+  flex-direction: column;
+  justify-content: center;        /* vertical centring */
+  padding: 120px 1rem 4rem;       /* keep top space under header */
 }

@@ -86,37 +86,67 @@
     </div>
 
     <div class="category-tabs">
-        <button class="tab-button active" data-category="social-media">WEB DESIGN</button>
-        <button class="tab-button" data-category="branding">ADVERTISEMENT</button>
-        <button class="tab-button" data-category="web-design">ILLUSTRATION</button>
-        <button class="tab-button" data-category="ui-ux">PHOTOGRAPHY</button>
+        <button class="tab-button active" data-category="web-design">WEB DESIGN</button>
+        <button class="tab-button" data-category="Advertisement">ADVERTISEMENT</button>
+        <button class="tab-button" data-category="illustration">ILLUSTRATION</button>
+        <button class="tab-button" data-category="photography">PHOTOGRAPHY</button>
     </div>
 </div>
 
 <script>
-    const tabs = document.querySelectorAll('.tab-button');
-    const mainImage = document.getElementById('main-image');
+   // 1. data: arrays instead of single strings
+const gallery = {
+  'web-design': [
+    'pictures/web-design1.png',
+    'pictures/web-design2.png',
+    'pictures/web-design3.png',
+    'pictures/web-design4.png'
+  ],
+  'advertisement': [
+    'adv1.png',
+    'adv2.png',
+    'adv3.png'
+  ],
+  'illustration': [
+    'illustra.png',
+    'illustra1.png',
+    'illustra2.png'
+  ],
+  'photography': [
+    'https://picsum.photos/seed/king/900/600',
+    'https://picsum.photos/seed/queen/900/600',
+    'https://picsum.photos/seed/jack/900/600'
+  ]
+};
 
-    const images = {
-        'illustration':'illustration1.png', 
-        'Advertisement': 'adv1.png',
-        'web-design': 'web-design1.png',
-        'photography': 'https://via.placeholder.com/900x600/ba68c8/000000?text=UI/UX+Case+Study'
-    };
+// 2. cache DOM
+const tabs       = document.querySelectorAll('.tab-button');
+const container  = document.getElementById('image-container'); // <div id="image-container"></div>
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // Remove 'active' class from all buttons
-            tabs.forEach(btn => btn.classList.remove('active'));
+// 3. one listener for every tab
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    // active-state styling
+    tabs.forEach(btn => btn.classList.remove('active'));
+    tab.classList.add('active');
 
-            // Add 'active' class to the clicked button
-            tab.classList.add('active');
+    // grab the category
+    const category = tab.dataset.category;      // e.g. "web-design"
 
-            // Get the category and update the image
-            const category = tab.dataset.category;
-            mainImage.src = images[category];
-        });
+    // build the new gallery
+    container.innerHTML = '';                   // wipe previous pictures
+    const urls = gallery[category] || [];       // safe fallback
+    urls.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = category;
+      container.appendChild(img);
     });
+  });
+});
+
+// 4. optional: click the first tab on load
+tabs[0].click();
 </script>
 </body>
 </html>

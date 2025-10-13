@@ -1,11 +1,17 @@
 /* ----------  RESET  ---------- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 /* ----------  GLOBAL  ---------- */
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #0a0514;            /* deep navy-purple */
+  background: #0a0514; /* deep navy-purple */
   color: #ebecff;
   min-height: 100vh;
 }
@@ -13,14 +19,17 @@ body {
 /* ----------  HEADER / NAV  ---------- */
 header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 80px;
   z-index: 100;
-  transition: height .3s ease, background .3s ease;
+  transition: height 0.3s ease, background 0.3s ease;
 }
-header.glass {                     /* shrank state */
+header.glass {
+  /* shrank state */
   height: 60px;
-  background: rgba(24, 0, 51, .65);
+  background: rgba(24, 0, 51, 0.65);
   backdrop-filter: blur(10px);
 }
 
@@ -34,29 +43,37 @@ header.glass {                     /* shrank state */
   padding: 0 1rem;
 }
 
-.logo { display: block; }
+.logo {
+  display: block;
+}
 
 nav a {
   margin-left: 1.5rem;
-  color: #ff49d8;                 /* your vivid pink */
+  color: #ff49d8; /* your vivid pink */
   text-decoration: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
   position: relative;
-  transition: color .25s;
+  transition: color 0.25s;
 }
 nav a:hover,
-nav a.active { color: #ff8edd; }   /* softer pink on hover */
+nav a.active {
+  color: #ff8edd;
+} /* softer pink on hover */
 
 nav a::after {
-  content: '';
+  content: "";
   position: absolute;
-  left: 0; bottom: -4px;
-  width: 0; height: 2px;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
   background: #ff49d8;
-  transition: width .25s;
+  transition: width 0.25s;
 }
 nav a:hover::after,
-nav a.active::after { width: 100%; }
+nav a.active::after {
+  width: 100%;
+}
 
 /* ----------  HERO  ---------- */
 .hero {
@@ -65,17 +82,25 @@ nav a.active::after { width: 100%; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: radial-gradient(ellipse at 50% 0%,
-                              #702660 0%,   /* your pinkish-purple glow */
-                              #0a0514 70%);
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    #702660 0%,
+    /* your pinkish-purple glow */ #0a0514 70%
+  );
 }
-.hero-text { opacity: 0; transform: translateY(20px); }
-.hero-text h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: #e0e2ff; }
+.hero-text {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.hero-text h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #e0e2ff;
+}
 .hero-text h2 {
   font-size: clamp(1rem, 3vw, 1.5rem);
   font-weight: 400;
-  margin-top: .5rem;
-  color: #ff49d8;               /* match nav accent */
+  margin-top: 0.5rem;
+  color: #ff49d8; /* match nav accent */
 }
 
 /* ----------  DUMMY / CONTENT SECTIONS  ---------- */
@@ -83,32 +108,89 @@ nav a.active::after { width: 100%; }
   padding: 4rem 1rem;
   max-width: 800px;
   margin: 0 auto 50vh;
-  border-top: 1px solid #ff49d8;   /* pink rule instead of old purple */
+  border-top: 1px solid #ff49d8; /* pink rule instead of old purple */
 }
 
 /* ----------  BUTTONS (if you add any later)  ---------- */
-button, .btn {
+button,
+.btn {
   background: #ff49d8;
   color: #0a0514;
   border: none;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
-  transition: background .3s ease;
+  transition: background 0.3s ease;
 }
-button:hover, .btn:hover { background: #ff8edd; }
+button:hover,
+.btn:hover {
+  background: #ff8edd;
+}
 
 /* ----------  RESPONSIVE  ---------- */
 @media (max-width: 600px) {
-  nav a { margin-left: 1rem; font-size: .8rem; }
+  nav a {
+    margin-left: 1rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* ----------  CENTRE WORKS BLOCK VERTICALLY  ---------- */
 .works-middle {
-  min-height: 100vh;              /* full viewport height */
+  min-height: 100vh; /* full viewport height */
   display: flex;
   flex-direction: column;
-  justify-content: center;        /* vertical centring */
-  padding: 120px 1rem 4rem;       /* keep top space under header */
+  justify-content: center; /* vertical centring */
+  padding: 120px 1rem 4rem; /* keep top space under header */
+}
+
+.intro-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 270px;
+}
+
+.left-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.left-intro h1 {
+  font-size: 120px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #db07ca, #ff8edd); /* purple gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  writing-mode: vertical-rl; /* makes text vertical */
+  text-orientation: mixed;
+  letter-spacing: 1px;
+  transform: rotate(180deg); /* flips text upright */
+}
+
+.intro-line {
+  border: 1px solid #ffffff;
+  margin: 10px;
+}
+
+.icon-intro {
+  display: flex;
+  padding: 60px 0;
+}
+
+.scroll-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.scroll-box {
+  background-color: #db07ca;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
 }

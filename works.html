@@ -1,171 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tshiamo.M</title>
-  <link rel="stylesheet" href="main.css">
-  <style>
-    /* ---- global ---- */
-    body{
-      background:#000;
-      color:#fff;
-      font-family:Arial,Helvetica,sans-serif;
-      margin:0;
-      display:flex;
-      flex-direction:column;
-      min-height:100vh;
-    }
-    a{color:#fff;text-decoration:none;}
-
-    /* ---- header ---- */
-    header{
-      width:100%;
-      padding:20px 0;
-      background:#111;
-    }
-    .container{
-      width:90%;
-      max-width:1100px;
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-    }
-    nav a{
-      margin-left:25px;
-      font-size:14px;
-      letter-spacing:1px;
-    }
-    nav a:hover{text-decoration:underline;}
-
-    /* ---- works gallery ---- */
-    main{
-      flex:1;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:40px 0;
-    }
-    .works-section{
-      width:90%;
-      max-width:900px;
-      text-align:center;
-    }
-    #image-container{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-      margin-bottom:25px;
-    }
-    #image-container img{
-      width:100%;
-      height:auto;
-      display:block;
-      border:1px solid #333;
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tshiamo.M</title>
+    <link rel="stylesheet" href="main.css" />
+   <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
     }
 
-    /* ---- category tabs ---- */
-    .category-tabs{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      flex-wrap:wrap;
+    .slider {
+      position: relative;
+      width: 650px;
+      height: 400px;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     }
-    .category-tabs button{
-      background:#222;
-      color:#fff;
-      border:1px solid #444;
-      padding:10px 20px;
-      cursor:pointer;
-      text-transform:uppercase;
-      font-size:14px;
-      transition:background .3s,border .3s;
+
+    .slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
     }
-    .category-tabs button.active{
-      background:#f1f1f1;
-      color:#000;
-      border-color:#f1f1f1;
+
+    .slider img.active {
+      opacity: 1;
+      z-index: 1;
     }
-    .category-tabs button:hover:not(.active){background:#333;}
+
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 10px 16px;
+      border-radius: 50%;
+      transition: background 0.3s;
+      z-index: 2;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    #prev {
+      left: 10px;
+    }
+
+    #next {
+      right: 10px;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .category-btn {
+      background: transparent;
+      border: 2px solid #ff007f;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .category-btn:hover,
+    .category-btn.active {
+      background: #ff007f;
+      color: #fff;
+    }
   </style>
-</head>
-<body>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="index.html">
+          <img
+            src="/pictures/Screenshot (51).png"
+            alt="logo"
+            width="50"
+            height="50"
+          />
+        </a>
+        <nav>
+          <a href="about.html">ABOUT</a>
+          <a href="works.html">WORKS</a>
+          <a href="contacts.html">WORK WITH ME</a>
+        </nav>
+      </div>
+    </header>
 
-<header>
-  <div class="container">
-    <a href="index.html">
-      <img src="/pictures/Screenshot (51).png" alt="logo" width="50" height="50">
-    </a>
-    <nav>
-      <a href="about.html">ABOUT</a>
-      <a href="works.html">WORKS</a>
-      <a href="contacts.html">WORK WITH ME</a>
-    </nav>
-  </div>
-</header>
+    <main>
+      <section class="works-section">
+        <div class="slider">
+          <button class="btn" id="prev">&#10094;</button>
+          <button class="btn" id="next">&#10095;</button>
 
-<main>
-  <section class="works-section">
-    <div id="image-container"></div>
+          <!-- Images -->
+          <img src="pictures/web-design1.png" class="active" alt="web design" />
+          <img src="pictures/adv1.png" alt="" />
+          <img src="pictures/illustra.png" alt="Slide 3" />
+          <img src="pictures/photography1.png" alt="Slide 4" />
+        </div>
+        <!-- Category Buttons -->
+        <div class="categories">
+          <button class="category-btn active" data-index="0">Web Design</button>
+          <button class="category-btn" data-index="1">Advertisement</button>
+          <button class="category-btn" data-index="2">Illustration</button>
+          <button class="category-btn" data-index="3">Photography</button>
+        </div>
 
-    <div class="category-tabs">
-      <button class="tab-button active" data-category="web-design">WEB DESIGN</button>
-      <button class="tab-button" data-category="advertisement">ADVERTISEMENT</button>
-      <button class="tab-button" data-category="illustration">ILLUSTRATION</button>
-      <button class="tab-button" data-category="photography">PHOTOGRAPHY</button>
+        <div id="image-container"></div>
+
+        
+    </main>
+
+     <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fa-regular fa-circle"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-behance"></i></a>
     </div>
-  </section>
-</main>
+    <div class="social-group">
+      <div class="social1">
+            <a href="https://www.instagram.com/" class="icon-link" aria-label="View portfolio">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="60"
+              fill="#ff8edd"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
+              ></path>
+            </svg>
+          </a>
+          <a href="https://github.com/tshiamonx" class="icon-link" aria-label="About me">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="60"
+              fill="#ff8edd"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"
+              ></path>
+            </svg>
+          </a>
+           <a href="https://www.linkedin.com/in/tshiamo-mantshogo-31301130a/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3Bql8oKWwaStCgfAPXaKepIQ%3D%3D" class="icon-link" aria-label="My works">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="60"
+              height="60"
+              fill="#ff8edd"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"
+              ></path>
+            </svg>
+          </a>
+      </div>
 
-<script>
-  const gallery = {
-    'web-design': [
-      'pictures/web-design1.png',
-      'pictures/web-design2.png',
-      'pictures/web-design3.png',
-      'pictures/web-design4.png'
-    ],
-    'advertisement': [
-      'adv1.png',
-      'adv2.png',
-      'adv3.png'
-    ],
-    'illustration': [
-      'illustra.png',
-      'illustra1.png',
-      'illustra2.png'
-    ],
-    'photography': [
-      'pictures/photography1.png',
-      'pictures/photography.png',
-      'https://picsum.photos/seed/jack/900/600'
-    ]
-  };
 
-  const container = document.getElementById('image-container');
-  const tabs      = document.querySelectorAll('.tab-button');
+      <div class="social2">
+          <p href="#" class="work-btn">WORK WITH ME</p>
+      </div>
+      <div class="social3">
+        <div class="footer-bottom">
+          Tshiamo ©2025
+        </div>
+      </div>
+    </div>
 
-  function loadCategory(category){
-    container.innerHTML = '';                       // wipe old
-    (gallery[category] || []).forEach(src => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = category;
-      container.appendChild(img);
-    });
-  }
+  </footer>
 
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabs.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      loadCategory(btn.dataset.category);
-    });
-  });
+    <script src="/main.js">
+      const gallery = {
+        "web-design": [
+          "pictures/web-design1.png",
+          "pictures/web-design2.png",
+          "pictures/web-design3.png",
+          "pictures/web-design4.png",
+        ],
+        advertisement: ["adv1.png", "adv2.png", "adv3.png"],
+        illustration: ["illustra.png", "illustra1.png", "illustra2.png"],
+        photography: ["pictures/photography1.png", "pictures/photography.png"],
+      };
 
-  // initial load
-  tabs[0].click();
-</script>
+      const container = document.getElementById("image-container");
+      const tabs = document.querySelectorAll(".tab-button");
 
-</body>
+      function loadCategory(category) {
+        container.innerHTML = ""; // wipe old
+        (gallery[category] || []).forEach((src) => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = category;
+          container.appendChild(img);
+        });
+      }
+
+      tabs.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tabs.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          loadCategory(btn.dataset.category);
+        });
+      });
+
+      // initial load
+      tabs[0].click();
+    </script>
+  </body>
 </html>
